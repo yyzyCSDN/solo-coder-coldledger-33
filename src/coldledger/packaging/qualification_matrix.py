@@ -6,7 +6,7 @@ def candidates(lane_class,forecast_low,forecast_high,transit_hours,payload_kg,ma
     out=[]
     for q in matrix:
         if q.lane_class not in {lane_class,'*'}:continue
-        if forecast_low<q.min_ambient or forecast_high>q.max_ambient:continue
+        if forecast_low>q.min_ambient or forecast_high>q.max_ambient:continue
         if transit_hours>q.hours:continue
         if not q.payload_min<=payload_kg<=q.payload_max:continue
         out.append(q)
